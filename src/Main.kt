@@ -27,7 +27,6 @@ fun main() {
             }
         }
 
-        // Add the converted word to the list
         convertedWords.add(convertedWord)
     }
 
