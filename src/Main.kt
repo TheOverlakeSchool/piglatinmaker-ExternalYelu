@@ -26,7 +26,7 @@ fun main() {
                 word.substring(1) + firstLetter + "ay"
             }
         }
-
+        //Add words join list
         convertedWords.add(convertedWord)
     }
 
