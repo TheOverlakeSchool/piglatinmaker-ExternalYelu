@@ -1,34 +1,38 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner
+
 fun main() {
-    // Create a Scanner object with an identifier getData that takes in information
-    // from System.in (import Scanner, then "val reader = Scanner(System.`in`)")
-    // UNTRANSLATED: We'll use readline later to get the data.
+    val reader = Scanner(System.`in`)
 
-    // Ask the user for a word
+    println("Enter a sentence to convert to Pig Latin:")
 
-    // Declare a String named enteredTerm and initialize it to the next word
-    // read in from getData
+    // Read the entire line input by the user
+    val enteredSentence = reader.nextLine()
 
+    val words = enteredSentence.split(" ")
 
-    // Clear out the buffer by calling nextLine on getData. UNTRANSLATED.
+    val convertedWords = mutableListOf<String>()
 
-    // Declare a String with an identifier convertedTerm, initialized to an empty String
+    // Loop through each word and convert it to Pig Latin
+    for (word in words) {
+        val firstLetter = word.substring(0, 1)
 
-    // Declare a String with an identifier firstLetter, initialized to a substring of
-    // enteredWord starting at index 0 and ending at index 1. We'll use substring as normal
+        // Initialize convertedWord
+        val convertedWord = when (firstLetter.lowercase()) {
+            "a", "e", "i", "o", "u" -> {
+                // If the first letter is a vowel, append "yay"
+                word + "yay"
+            }
+            else -> {
+                word.substring(1) + firstLetter + "ay"
+            }
+        }
 
-    // If firstLetter is a vowel (note - this is five conditions using OR logic)
-        //Set convertedTerm to enteredterm concatenated with "yay"
-    // otherwise
-        // Set convertedTerm to a substring of enteredTerm from index 1 to the end, concatenated
-        // with a substring of enteredTerm from index 0 to index 1, concatenated with "ay"
-    // TRANSLATED: When becomes a better control structure to use here
-
+        // Add the converted word to the list
+        convertedWords.add(convertedWord)
     }
-    // Print that the Pig Latin Version of the enteredTerm is your convertedTerm
 
+    val convertedSentence = convertedWords.joinToString(" ")
 
-
-
+    // Print the Pig Latin version of the entered sentence
+    println("The Pig Latin version of the sentence is: '$convertedSentence'.")
 }
